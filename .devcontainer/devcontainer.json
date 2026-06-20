@@ -1,0 +1,24 @@
+{
+  "name": "Exercism TypeScript",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "Orta.vscode-jest",
+        "firsttris.vscode-jest-runner"
+      ],
+      "settings": {
+        "typescript.preferences.importModuleSpecifier": "relative",
+        "jest.autoRun": "off",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-vscode.vscode-typescript-next"
+      }
+    }
+  },
+  "postCreateCommand": "EXERCISM_URL=$(curl -s https://api.github.com/repos/exercism/cli/releases/latest | grep browser_download_url | grep linux.*x86_64 | cut -d'\"' -f4) && curl -fL \"$EXERCISM_URL\" | sudo tar -xz -C /usr/local/bin exercism && exercism configure --token=32f807e1-9be7-4696-9f5c-639b04f5fd6d --workspace=/workspaces/exercism-typescript && echo 'Exercism CLI ready'",
+  "remoteUser": "node"
+}
