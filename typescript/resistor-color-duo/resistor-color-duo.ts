@@ -17,7 +17,12 @@ export function decodedValue(
   if (colorNames.length > 3) {
     throw new Error('error');
   }
-  const a = colorDictionary[colorNames[0] as keyof typeof colorDictionary] ?? 99;
-  const b = colorDictionary[colorNames[1] as keyof typeof colorDictionary] ?? 99;
-  return a * 10 + b;
+  const [colorName1, colorName2] = colorNames;
+  const index1 = getColorIndex(colorName1);
+  const index2 = getColorIndex(colorName2);
+  return index1 * 10 + index2;
+}
+
+function getColorIndex(colorName :string): number {
+  return colorDictionary[colorName as keyof typeof colorDictionary] ?? 99;
 }
